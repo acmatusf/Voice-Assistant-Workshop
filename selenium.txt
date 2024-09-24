@@ -1,0 +1,25 @@
+#import selenium
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+#create driver session -- initialize driver class object
+driver = webdriver.Chrome()
+
+#Take action on browser
+driver.get("https://www.youtube.com/")
+
+title = driver.title
+
+#establishing waiting strategy -- sychnronize code with current state of browser (biggest challenge with Selenium -- advanced topic)
+#Essentially you want to make sure that the element is on the page before you attempt to locate it and the element is in an interactable state before you attempt to interact with it.
+#An implicit wait is rarely the best solution, but it’s the easiest to demonstrate here, so we’ll use it as a placeholder.
+
+driver.implicitly_wait(5)
+
+#Find an element
+text_box = driver.find_element(by=By.NAME, value="my-text")
+submit_button = driver.find_element(by=By.CSS_SELECTOR, value="button")
+
+
+#quitting a session -- deleting a session (ending it)
+driver.quit()
